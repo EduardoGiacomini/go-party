@@ -4,7 +4,7 @@
   "description": "REST API para a aplicação Go Party",
   "main": "src/index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
@@ -18,6 +18,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "lodash": "^4.17.20",
     "pg": "^8.4.2",
     "sequelize": "^6.3.5"
   }

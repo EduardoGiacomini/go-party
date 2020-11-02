@@ -1,0 +1,12 @@
+# Dependências
+node_modules
+
+# IDE
+.idea
+.vscode
+
+# Variáveis de ambiente
+.env
+
+# MacOS
+.DS_Store

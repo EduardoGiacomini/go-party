@@ -36,4 +36,26 @@ describe("Caso de uso: criar usuário", () => {
         const usecase = new CreateUserUsecase(userRepositoryMock);
         usecase.execute(userToSave, responderMock);
     });
+
+    test("Deve retornar erro já existir um usuário com o mesmo endereço de e-mail", (done) => {
+        const userToSave = {name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
+        const savedUser = {id: 1, name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
+        const expectedUser = new Error('DUPLICATED_USER');
+
+        const userRepositoryMock = {
+            findUserByEmail(email) {
+                return savedUser;
+            }
+        }
+
+        const responderMock = {
+            error(error) {
+                expect(error).toEqual(expectedUser);
+                done()
+            }
+        }
+
+        const usecase = new CreateUserUsecase(userRepositoryMock);
+        usecase.execute(userToSave, responderMock);
+    })
 });

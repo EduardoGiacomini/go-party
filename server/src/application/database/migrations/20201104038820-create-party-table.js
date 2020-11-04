@@ -10,11 +10,21 @@ module.exports = {
                 allowNull: false
             },
             name: {
-                type: Sequelize.STRING,
+                type: Sequelize.STRING(100),
                 allowNull: false
             },
-            date: {
+            description: {
+                type: Sequelize.STRING(255)
+            },
+            date_time: {
                 type: Sequelize.DATE
+            },
+            user_id: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: { model: "users", key: "id" },
+                onUpdate: "CASCADE",
+                onDelete: "CASCADE"
             },
             created_at: {
                 type: Sequelize.DATE,

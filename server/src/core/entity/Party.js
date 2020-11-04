@@ -3,9 +3,21 @@ const { Model, DataTypes } = require("sequelize");
 class Party extends Model {
     static init(connection) {
         super.init({
-            name: DataTypes.STRING,
-            date: DataTypes.DATE
+            name: {
+                type: DataTypes.STRING(100),
+                allowNull: false
+            },
+            description: {
+                type: DataTypes.STRING(255)
+            },
+            date_time: {
+                type: DataTypes.DATE
+            }
         }, { sequelize: connection });
+    }
+
+    static associate(models) {
+        this.belongsTo(models.User, { foreignKey: "user_id", as: "user" });
     }
 }
 

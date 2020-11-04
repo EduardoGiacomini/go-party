@@ -16,7 +16,7 @@ class CreateUserUsecase {
     }
 
     async _isThereAnyUserWithSameEmail(email) {
-        const user = await this.userRepository.findUserByEmail(email);
+        const user = await this.userRepository.findByEmail(email);
         return user;
     }
 }

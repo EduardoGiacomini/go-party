@@ -8,8 +8,8 @@ describe("Caso de uso: criar usuário", () => {
     });
 
     test("Deve criar o usuário e retorná-lo com um ID", (done) => {
-        const userToSave = {name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
-        const expectedUser = {id: 1, name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
+        const userToSave = {name: "Naruto Uzumaki", email: "naruto@gmail.com", phone: "67999999999"};
+        const expectedUser = {id: 1, name: "Naruto Uzumaki", email: "naruto@gmail.com", phone: "67999999999"};
 
         const userRepositoryMock = {
             create(user) {
@@ -28,7 +28,6 @@ describe("Caso de uso: criar usuário", () => {
                 done();
             },
             error(error) {
-                console.log(error);
                 done()
             }
         }
@@ -38,8 +37,8 @@ describe("Caso de uso: criar usuário", () => {
     });
 
     test("Deve retornar erro já existir um usuário com o mesmo endereço de e-mail", (done) => {
-        const userToSave = {name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
-        const savedUser = {id: 1, name: "Naruto Uzumaki", email: "naruto@gmail.com", telefone: "67999999999"};
+        const userToSave = {name: "Naruto Uzumaki", email: "naruto@gmail.com", phone: "67999999999"};
+        const savedUser = {id: 1, name: "Naruto Uzumaki", email: "naruto@gmail.com", phone: "67999999999"};
         const expectedUser = new Error('DUPLICATED_USER');
 
         const userRepositoryMock = {

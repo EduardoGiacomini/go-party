@@ -14,7 +14,7 @@ class Responder {
     }
 
     error(err) {
-        this.response.status(400).json(err);
+        this.next(err);
     }
 }
 

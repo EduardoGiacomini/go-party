@@ -21,6 +21,7 @@ class Database {
     _connectEntities() {
         for (const entity of this.entities) {
             entity.init(this.connection);
+            console.log(`${entity.name} reconhecida.`)
         }
     }
 }

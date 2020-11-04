@@ -11,18 +11,27 @@ class Database {
     async connect() {
         await this._connectDatabase();
         this._connectEntities();
+        this._associateEntities();
     }
 
     async _connectDatabase() {
         this.connection = new Sequelize(this.config);
         await this.connection.authenticate();
+        console.info('✅ Banco de dados conectado.')
     }
 
     _connectEntities() {
         for (const entity of this.entities) {
             entity.init(this.connection);
-            console.log(`${entity.name} reconhecida.`)
         }
+        console.info('✅ Entidades reconhecidas.')
+    }
+
+    _associateEntities() {
+        for (const entity of this.entities) {
+            entity.associate(this.connection.models);
+        }
+        console.info('✅ Entidades associadas.')
     }
 }
 

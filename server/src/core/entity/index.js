@@ -1,9 +1,9 @@
-const { Party } = require("./Party");
 const { User } = require("./User");
+const { Party } = require("./Party");
 
 module.exports = {
     entities: [
-        Party,
-        User
+        User,
+        Party
     ]
 };

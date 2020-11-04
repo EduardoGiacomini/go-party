@@ -17,6 +17,10 @@ class User extends Model {
             }
         }, { sequelize: connection });
     }
+
+    static associate(models) {
+        this.hasMany(models.Party, { foreignKey: "user_id", as: "parties" });
+    }
 }
 
 module.exports = { User };

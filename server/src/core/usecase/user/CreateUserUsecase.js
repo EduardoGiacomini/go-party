@@ -8,6 +8,7 @@ class CreateUserUsecase {
             if (await this._isThereAnyUserWithSameEmail(user.email)) {
                 throw new Error('DUPLICATED_USER');
             }
+
             const createdUser = await this.userRepository.create(user);
             responder.created(createdUser);
         } catch (error) {
@@ -16,8 +17,7 @@ class CreateUserUsecase {
     }
 
     async _isThereAnyUserWithSameEmail(email) {
-        const user = await this.userRepository.findByEmail(email);
-        return user;
+        return this.userRepository.findByEmail(email);
     }
 }
 

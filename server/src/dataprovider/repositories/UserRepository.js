@@ -7,10 +7,12 @@ class UserRepository {
         return this.User.create(user);
     }
 
+    async findByPrimaryKey(id) {
+        return this.User.findByPk(id);
+    }
+
     async findByEmail(email) {
-        const foundUsers = await this.User.findAll({ where: { email: email } });
-        const user = foundUsers[0];
-        return user;
+        return this.User.findOne({ where: { email: email } });
     }
 }
 

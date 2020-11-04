@@ -14,6 +14,11 @@ class UserRepository {
     async findByEmail(email) {
         return this.User.findOne({ where: { email: email } });
     }
+
+    async findAllParties(id) {
+        const { parties } = await this.User.findByPk(id, { include: { association: 'parties' } });
+        return parties;
+    }
 }
 
 module.exports = { UserRepository };

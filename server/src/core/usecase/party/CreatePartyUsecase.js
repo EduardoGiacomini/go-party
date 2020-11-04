@@ -7,7 +7,8 @@ class CreatePartyUsecase {
     async execute({userId, party}, responder) {
         try {
             if (!await this._isThereUser(userId)) {
-                throw new Error('USER_DOES_NOT_EXIST');
+                const error = new Error('USER_DOES_NOT_EXIST');
+                return responder.notFound(error);
             }
 
             const partyToSave = this._buildPartyObject(party, userId);

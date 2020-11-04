@@ -16,6 +16,11 @@ class Responder {
     error(err) {
         this.next(err);
     }
+
+    notFound(err) {
+        err.status = 404;
+        this.next(err);
+    }
 }
 
 class ResponderFactory {

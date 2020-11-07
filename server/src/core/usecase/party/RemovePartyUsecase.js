@@ -16,7 +16,7 @@ class RemovePartyUsecase {
                 return responder.notFound(error);
             }
 
-            await this.partyRepository.remove(userId, partyId);
+            await this.partyRepository.remove(partyId, userId);
             responder.success();
         } catch (error) {
             responder.error(error);

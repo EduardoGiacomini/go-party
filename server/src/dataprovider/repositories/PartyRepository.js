@@ -11,8 +11,16 @@ class PartyRepository {
         return this.Party.findByPk(id);
     }
 
-    async remove(user_id, id) {
+    async findByPrimaryKeyAndUserId(id, user_id) {
+        return this.Party.findOne({ where: { id, user_id } });
+    }
+
+    async remove(id, user_id) {
         await this.Party.destroy({ where: { id, user_id } });
+    }
+
+    async update(id, user_id, party) {
+        return this.Party.update(party, { where: { id, user_id } });
     }
 }
 

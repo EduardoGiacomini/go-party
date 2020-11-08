@@ -10,7 +10,7 @@ class CreatePartyRoute {
         const responder = this.responderFactory.create(request, response, next);
         const { userId } = request.params;
         const { name, description, dateTime } = request.body;
-        const party = { name, description, dateTime };
+        const party = { name, description, date_time: dateTime };
         this.usecase.execute({userId, party}, responder);
     }
 

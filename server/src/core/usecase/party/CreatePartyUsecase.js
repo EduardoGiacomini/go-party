@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 class CreatePartyUsecase {
     constructor(partyRepository, userRepository) {
         this.partyRepository = partyRepository;
@@ -20,12 +22,14 @@ class CreatePartyUsecase {
     }
 
     async _isThereUser(userId) {
-        return this.userRepository.findByPrimaryKey(userId);
+        const usersCount = await this.userRepository.countByPrimaryKey(userId);
+        return usersCount > 0;
     }
 
     _buildPartyObject(party, userId) {
-        party.user_id = userId;
-        return party;
+        const partyToSave = _.clone(party);
+        partyToSave.user_id = userId;
+        return partyToSave;
     }
 }
 

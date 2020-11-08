@@ -6,14 +6,13 @@ class RemovePartyUsecase {
 
     async execute({userId, partyId}, responder) {
         try {
-            if (!await this._isThereUser(userId)) {
-                const error = new Error('USER_DOES_NOT_EXIST');
-                return responder.notFound(error);
-            }
-
             if (!await this._isThereParty(partyId)) {
                 const error = new Error('PARTY_DOES_NOT_EXIST');
                 return responder.notFound(error);
+            }
+
+            if (!await this._doesThePartyBelongToUser(partyId, userId)) {
+                throw new Error('PARTY_DOES_NOT_BELONG_TO_USER');
             }
 
             await this.partyRepository.remove(partyId, userId);
@@ -23,12 +22,14 @@ class RemovePartyUsecase {
         }
     }
 
-    async _isThereUser(userId) {
-        return this.userRepository.findByPrimaryKey(userId);
+    async _isThereParty(partyId) {
+        const partiesCount = await this.partyRepository.countByPrimaryKey(partyId);
+        return partiesCount > 0;
     }
 
-    async _isThereParty(partyId) {
-        return this.partyRepository.findByPrimaryKey(partyId);
+    async _doesThePartyBelongToUser(partyId, userId) {
+        const partiesCount = await this.partyRepository.countByPrimaryKeyAndUserId(partyId, userId);
+        return partiesCount > 0;
     }
 }
 

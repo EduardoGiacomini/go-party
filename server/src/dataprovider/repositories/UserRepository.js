@@ -19,6 +19,10 @@ class UserRepository {
         const { parties } = await this.User.findByPk(id, { include: { association: 'parties' } });
         return parties;
     }
+
+    async countByPrimaryKey(id) {
+        return this.User.count({ where: { id } });
+    }
 }
 
 module.exports = { UserRepository };

@@ -14,23 +14,24 @@ class UpdatePartyUsecase {
             }
 
             if (!await this._doesThePartyBelongToUser(partyId, userId)) {
-                const error = new Error('PARTY_DOES_NOT_BELONG_TO_USER');
-                return responder.error(error);
+                throw new Error('PARTY_DOES_NOT_BELONG_TO_USER');
             }
 
-            const updatedParty = await this.partyRepository.update(partyId, userId, party);
-            responder.success(updatedParty);
+            await this.partyRepository.update(partyId, userId, party);
+            responder.success();
         } catch (error) {
             responder.error(error);
         }
     }
 
     async _isThereParty(partyId) {
-        return this.partyRepository.findByPrimaryKey(partyId);
+        const partiesCount = await this.partyRepository.countByPrimaryKey(partyId);
+        return partiesCount > 0;
     }
 
     async _doesThePartyBelongToUser(partyId, userId) {
-        return this.partyRepository.findByPrimaryKeyAndUserId(partyId, userId);
+        const partiesCount = await this.partyRepository.countByPrimaryKeyAndUserId(partyId, userId);
+        return partiesCount;
     }
 }
 

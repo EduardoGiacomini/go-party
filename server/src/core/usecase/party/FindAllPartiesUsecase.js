@@ -18,7 +18,8 @@ class FindAllPartiesUsecase {
     }
 
     async _isThereUser(userId) {
-        return this.userRepository.findByPrimaryKey(userId);
+        const usersCount = await this.userRepository.countByPrimaryKey(userId);
+        return usersCount > 0;
     }
 }
 

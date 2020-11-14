@@ -24,7 +24,9 @@ class Application {
 
             const router = RouterFactory.create(factories);
             router.setupRoutes();
+
             this._applyRoutes(router.getRoutes());
+            this._applyExceptionsHandlers();
 
             this._startApplication();
         } catch (error) {
@@ -34,11 +36,14 @@ class Application {
 
     _applyMiddlewares() {
         this.app.use(express.json());
-        this.app.use(exception);
     }
 
     _applyRoutes(routes) {
         this.app.use(routes);
+    }
+
+    _applyExceptionsHandlers() {
+        this.app.use(exception);
     }
 
     _startApplication() {

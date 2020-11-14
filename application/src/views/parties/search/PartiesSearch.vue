@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import {actions} from "@/constants";
   import PartiesCard from "./components/PartiesCard";
   export default {
     name: "parties-search",
@@ -25,6 +26,10 @@
         isLoading: true,
         parties: []
       }
+    },
+    async mounted() {
+      const parties = await this.$store.dispatch(actions.FIND_PARTIES);
+      console.log(parties);
     }
   }
 </script>

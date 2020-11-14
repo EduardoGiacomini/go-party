@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const { exception } = require("./middlewares/exception");
 
@@ -36,6 +37,7 @@ class Application {
 
     _applyMiddlewares() {
         this.app.use(express.json());
+	this.app.use(cors());
     }
 
     _applyRoutes(routes) {

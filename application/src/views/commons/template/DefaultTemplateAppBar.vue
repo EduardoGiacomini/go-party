@@ -42,6 +42,7 @@
 <script>
   import DefaultTemplateTitle from "./DefaultTemplateTitle";
   import DefaultTemplateAvatar from "./DefaultTemplateAvatar";
+  import {mutations} from "@/constants";
   export default {
     name: "default-template-app-bar",
     components: {DefaultTemplateTitle, DefaultTemplateAvatar},
@@ -55,7 +56,8 @@
         this.openMenu = !this.openMenu;
       },
       goToLogoutPage() {
-        console.log("Logout router");
+        this.$store.commit(mutations.SET_USER, null);
+        this.$router.push({ name: "login" });
       }
     }
   };

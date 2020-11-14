@@ -12,7 +12,11 @@ class UserRepository {
     }
 
     async findByEmail(email) {
-        return this.User.findOne({ where: { email: email } });
+        return this.User.findOne({ where: { email } });
+    }
+
+    async findByNameAndEmail(name, email) {
+        return this.User.findOne({ where: {name, email} });
     }
 
     async findAllParties(id) {

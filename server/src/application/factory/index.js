@@ -1,3 +1,5 @@
+const { FakeLoginFactory } = require("./auth/FakeLoginFactory");
+
 const { CreateUserFactory } = require("./user/CreateUserFactory");
 
 const { CreatePartyFactory } = require("./party/CreatePartyFactory");
@@ -7,6 +9,8 @@ const { UpdatePartyFactory } = require("./party/UpdatePartyFactory");
 
 module.exports = {
     factories: [
+        FakeLoginFactory,
+
         CreateUserFactory,
 
         CreatePartyFactory,

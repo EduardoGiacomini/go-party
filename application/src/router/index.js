@@ -1,16 +1,28 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import PartiesSearch from "../views/parties/search/PartiesSearch";
+import FakeLogin from "../views/external/login/FakeLogin";
+import PartiesSearch from "../views/internal/parties/search/PartiesSearch";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "login",
+    component: FakeLogin,
+    meta: {
+      requiresAuthentication: false
+    }
+  },
+  {
+    path: "/dashboard",
     name: "parties",
     component: PartiesSearch,
-  },
+    meta: {
+      requiresAuthentication: true
+    }
+  }
 ];
 
 const router = new VueRouter({

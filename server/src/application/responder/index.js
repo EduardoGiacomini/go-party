@@ -21,6 +21,11 @@ class Responder {
         err.status = 404;
         this.next(err);
     }
+
+    unauthorized(err) {
+        err.status = 401;
+        this.next(err);
+    }
 }
 
 class ResponderFactory {

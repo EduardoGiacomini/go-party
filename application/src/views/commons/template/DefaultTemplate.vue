@@ -2,7 +2,7 @@
   <v-app>
     <default-template-app-bar />
     <v-main>
-      <v-container fluid>
+      <v-container class="default-template-container" fluid>
         <slot/>
       </v-container>
     </v-main>
@@ -18,3 +18,10 @@
     components: {DefaultTemplateAppBar, DefaultTemplateFooter}
   }
 </script>
+
+<style scoped>
+  .default-template-container {
+    min-height: calc(100vh - 64px - 36px);
+    background-color: #F4F4F9;
+  }
+</style>

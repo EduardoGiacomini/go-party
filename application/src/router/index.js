@@ -1,20 +1,20 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-import CreateUser from '@/views/user/CreateUser.vue';
+import PartiesSearch from "../views/parties/search/PartiesSearch";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'CreateUser',
-    component: CreateUser,
+    path: "/",
+    name: "parties",
+    component: PartiesSearch,
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes,
 });

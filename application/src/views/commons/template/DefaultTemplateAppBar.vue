@@ -20,11 +20,11 @@
         <v-divider class="mb-2"></v-divider>
 
         <v-list-item-group>
-          <v-list-item :to="{ name: 'home'}">
+          <v-list-item :to="{ name: 'parties'}">
             <v-list-item-icon>
-              <v-icon>mdi-chart-bar</v-icon>
+              <v-icon>mdi-cake</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Página principal</v-list-item-title>
+            <v-list-item-title>Minhas festas</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

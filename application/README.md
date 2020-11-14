@@ -1,24 +1,21 @@
-# application
+# Go Party - Frontend
+Frontend para a aplicação Go Party, uma ferramenta web colaborativa para organização de festas.
+<hr />
 
-## Project setup
-```
-yarn install
-```
+## Como executar?
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+OBS: primeiro siga os passos para executar o backend da aplicação.
 
-### Compiles and minifies for production
-```
-yarn build
+Vamos começar instalando as dependências do projeto:
+
+```bash
+npm install
 ```
 
-### Lints and fixes files
-```
-yarn lint
+Após a instalação das dependências, vamos executá-la em ambiente de desenvolvimento:
+
+```bash
+npm run start
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<p style="text-align: center;">© 2020 Copyright - Carlos Giacomini - Todos os direitos reservados.</p>

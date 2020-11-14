@@ -29,6 +29,8 @@ Agora, você pode editar o aquivo `.env` com as configurações de acesso de seu
 npx sequelize db:create
 ```
 
+Após executar este comando, um banco de dados chamado party (ou outro nome caso você tenha alterado) será criado em seu postgres.
+
 Com o banco de dados criado, podemos executar as migrations de criação das tabelas:
 ```bash
 npx sequelize db:migrate
@@ -41,13 +43,18 @@ npm run start
 
 A aplicação estará executando em http://localhost:8080.
 
-## Comandos do Sequelize
+Caso você queira executar a aplicação em modo de desenvolvimento:
+```bash
+npm run dev
+```
+
+## Comandos úteis para o Sequelize
 
 ```bash
 npx sequelize db:create
-npx sequelize migration:create --name=create-party-table
+npx sequelize migration:create --name=nome-da-tabela
 npx sequelize db:migrate
-npx sequelize db:migrate:undo Desfaz a última migration
+npx sequelize db:migrate:undo
 ```
 
 <p style="text-align: center;">© 2020 Copyright - Carlos Giacomini - Todos os direitos reservados.</p>

@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="onSubmit">
+  <v-form @submit.prevent="submit">
     <v-text-field
       class="mb-2"
       prepend-inner-icon="mdi-account"
@@ -40,7 +40,7 @@
       }
     },
     methods: {
-      onSubmit() {
+      submit() {
         this.$emit('submit', {email: this.email, name: this.name})
       }
     }

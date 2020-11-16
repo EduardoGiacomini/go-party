@@ -8,7 +8,7 @@
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text>
-            <fake-login-form @submit="onSubmit"/>
+            <fake-login-form @submit="submit"/>
           </v-card-text>
         </v-card>
       </v-col>
@@ -23,7 +23,7 @@
     name: "fake-login",
     components: {FakeLoginForm},
     methods: {
-      async onSubmit({email, name}) {
+      async submit({email, name}) {
         try {
           const user = await this.$store.dispatch(actions.FAKE_LOGIN, {email, name});
           this.$router.push({ name: "parties" });

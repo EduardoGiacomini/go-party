@@ -21,23 +21,31 @@
 </template>
 
 <script>
-    import CreatePartyForm from "./components/CreatePartyForm";
-    import BackButton from "../../../commons/BackButton";
-    export default {
-      name: 'create-party',
-      components: {CreatePartyForm, BackButton},
-      data() {
-        return {
-          party: {
-            name: null,
-            description: null
-          }
+  import {actions} from "../../../../constants";
+  import CreatePartyForm from "./components/CreatePartyForm";
+  import BackButton from "../../../commons/BackButton";
+  export default {
+    name: 'create-party',
+    components: {CreatePartyForm, BackButton},
+    data() {
+      return {
+        party: {
+          name: null,
+          description: null,
+          dateTime: null
         }
-      },
-      methods: {
-        submit() {
-          console.log(this.party);
+      }
+    },
+    methods: {
+      async submit() {
+        try {
+          this.$store.dispatch(actions.CREATE_PARTY, this.party);
+          // TODO: exibir mensagem
+        } catch (error) {
+          // TODO: exibir mensagem
+          console.log(error);
         }
       }
     }
+  }
 </script>

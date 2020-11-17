@@ -39,7 +39,8 @@
     methods: {
       async submit() {
         try {
-          this.$store.dispatch(actions.CREATE_PARTY, this.party);
+          await this.$store.dispatch(actions.CREATE_PARTY, this.party);
+          this.$router.push({ name: "parties" });
           // TODO: exibir mensagem
         } catch (error) {
           // TODO: exibir mensagem

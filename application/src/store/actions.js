@@ -20,6 +20,18 @@ export default {
     return data;
   },
 
+  async [actions.FIND_PARTY_BY_ID]({state}, partyId) {
+    const userId = state.user.id;
+    const {data} = await axios.get(`/users/${userId}/parties/${partyId}`);
+    return data;
+  },
+
+  async [actions.UPDATE_PARTY]({state}, {partyId, party}) {
+    const userId = state.user.id;
+    const {data} = await axios.put(`/users/${userId}/parties/${partyId}`, party);
+    return data;
+  },
+
   async [actions.REMOVE_PARTY]({state}, partyId) {
     const userId = state.user.id;
     await axios.delete(`/users/${userId}/parties/${partyId}`);

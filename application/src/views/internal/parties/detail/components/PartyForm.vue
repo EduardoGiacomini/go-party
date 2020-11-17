@@ -21,7 +21,7 @@
 
 <script>
   export default {
-    name: "create-party-form",
+    name: "party-form",
     props: {
       value: {
         type: Object,

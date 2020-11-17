@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import FakeLogin from "../views/external/login/FakeLogin";
 import PartiesSearch from "../views/internal/parties/search/PartiesSearch";
 import CreateParty from "../views/internal/parties/detail/CreateParty";
+import UpdateParty from "../views/internal/parties/detail/UpdateParty";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,14 @@ const routes = [
     path: "/parties/create",
     name: "createParty",
     component: CreateParty,
+    meta: {
+      requiresAuthentication: true
+    }
+  },
+  {
+    path: "/parties/:id",
+    name: "updateParty",
+    component: UpdateParty,
     meta: {
       requiresAuthentication: true
     }

@@ -14,7 +14,7 @@
       </v-card-title>
       <v-divider></v-divider>
       <v-card-text>
-        <create-party-form v-model="party" @submit="submit"/>
+        <party-form v-model="party" @submit="create"/>
       </v-card-text>
     </v-card>
   </div>
@@ -22,11 +22,11 @@
 
 <script>
   import {actions} from "../../../../constants";
-  import CreatePartyForm from "./components/CreatePartyForm";
+  import PartyForm from "./components/PartyForm";
   import BackButton from "../../../commons/BackButton";
   export default {
     name: 'create-party',
-    components: {CreatePartyForm, BackButton},
+    components: {PartyForm, BackButton},
     data() {
       return {
         party: {
@@ -37,7 +37,7 @@
       }
     },
     methods: {
-      async submit() {
+      async create() {
         try {
           await this.$store.dispatch(actions.CREATE_PARTY, this.party);
           this.$router.push({ name: "parties" });

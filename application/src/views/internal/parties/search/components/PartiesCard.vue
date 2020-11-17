@@ -4,7 +4,7 @@
       <v-layout align-center>
         {{party.name}}
         <v-spacer></v-spacer>
-        <v-btn class="mr-1" icon>
+        <v-btn class="mr-1" icon @click="goToUpdatePartyPage">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
         <v-btn icon>
@@ -45,12 +45,15 @@
       }
     },
     methods: {
+      goToUpdatePartyPage() {
+        this.$router.push({ name: "updateParty", params: {id: this.party.id} });
+      },
       changeRemoveConfirmStatus() {
         this.openRemoveConfirm = !this.openRemoveConfirm;
       },
       remove() {
         this.changeRemoveConfirmStatus();
-        this.$emit('remove', this.party.id);
+        this.$emit("remove", this.party.id);
       }
     }
   }

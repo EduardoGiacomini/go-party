@@ -11,6 +11,10 @@ class PartyRepository {
         return this.Party.findByPk(id);
     }
 
+    async findByPrimaryKeyAndUserId(id, user_id) {
+        return this.Party.findOne({ where: { id, user_id } });
+    }
+
     async countByPrimaryKey(id) {
         return this.Party.count({ where: { id } });
     }

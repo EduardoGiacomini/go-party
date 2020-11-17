@@ -16,7 +16,7 @@ class UserRepository {
     }
 
     async findByNameAndEmail(name, email) {
-        return this.User.findOne({ where: {name, email} });
+        return this.User.findOne({ where: { name, email } });
     }
 
     async findAllParties(id) {

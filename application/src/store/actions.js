@@ -18,5 +18,10 @@ export default {
     const userId = state.user.id;
     const {data} = await axios.get(`users/${userId}/parties`);
     return data;
+  },
+
+  async [actions.REMOVE_PARTY]({state}, partyId) {
+    const userId = state.user.id;
+    await axios.delete(`/users/${userId}/parties/${partyId}`);
   }
 };

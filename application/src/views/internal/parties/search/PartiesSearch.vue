@@ -7,7 +7,7 @@
       </v-btn>
     </v-flex>
     <v-flex class="xs12 sm6 md4" v-for="(party, index) in parties" :key="index">
-      <parties-card :party="party"/>
+      <parties-card :party="party" @remove="removeParty"/>
     </v-flex>
   </v-layout>
 </template>
@@ -20,8 +20,7 @@
     components: {PartiesCard},
     data() {
       return {
-        parties: [],
-        isLoading: true
+        parties: []
       }
     },
     async mounted() {
@@ -31,10 +30,13 @@
       async findParties() {
         const foundParties = await this.$store.dispatch(actions.FIND_PARTIES);
         this.parties = foundParties;
-        this.isLoading = false;
       },
       goToCreatePartyPage() {
         this.$router.push({ name: "createParty" });
+      },
+      async removeParty(id) {
+        await this.$store.dispatch(actions.REMOVE_PARTY, id);
+        await this.findParties();
       }
     }
   }

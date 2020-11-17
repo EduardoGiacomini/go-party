@@ -51,7 +51,8 @@
       },
       async update() {
         try {
-          this.party = await this.$store.dispatch(actions.UPDATE_PARTY, {partyId: this.partyId, party: this.party});
+          await this.$store.dispatch(actions.UPDATE_PARTY, {partyId: this.partyId, party: this.party});
+          await this.findParty();
         } catch (error) {
           // TODO: exibir mensagem de erro
           console.log(error);

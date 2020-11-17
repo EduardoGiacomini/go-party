@@ -50,7 +50,7 @@ class Application {
 
     _startApplication() {
         this.app.listen(this.port, this.host, () => {
-            console.log(`🚀 Server started on http://${this.host}:${this.port}`);
+            console.log(`🚀 Servidor iniciado em http://${this.host}:${this.port}.`);
         });
     }
 }

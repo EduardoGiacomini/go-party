@@ -24,8 +24,10 @@
   import {actions} from "../../../../constants";
   import PartyForm from "./components/PartyForm";
   import BackButton from "../../../commons/BackButton";
+  import {alert} from "../../../mixins";
   export default {
     name: 'create-party',
+    mixins: [alert],
     components: {PartyForm, BackButton},
     data() {
       return {
@@ -41,7 +43,7 @@
         try {
           await this.$store.dispatch(actions.CREATE_PARTY, this.party);
           this.$router.push({ name: "parties" });
-          // TODO: exibir mensagem
+          this.showSuccess('Festa criada com sucesso.');
         } catch (error) {
           // TODO: exibir mensagem
           console.log(error);

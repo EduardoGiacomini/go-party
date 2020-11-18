@@ -1,3 +1,7 @@
 export default {
-  user: null
+  user: null,
+  alert: {
+    message: null,
+    type: null
+  }
 };

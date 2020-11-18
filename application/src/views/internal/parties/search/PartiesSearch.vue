@@ -15,8 +15,10 @@
 <script>
   import {actions} from "@/constants";
   import PartiesCard from "./components/PartiesCard";
+  import {alert} from "../../../mixins";
   export default {
     name: "parties-search",
+    mixins: [alert],
     components: {PartiesCard},
     data() {
       return {
@@ -37,6 +39,7 @@
       async removeParty(id) {
         await this.$store.dispatch(actions.REMOVE_PARTY, id);
         await this.findParties();
+        this.showSuccess('Festa excluída com sucesso.')
       }
     }
   }

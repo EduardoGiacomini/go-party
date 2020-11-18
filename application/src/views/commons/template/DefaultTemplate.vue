@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <alert/>
     <default-template-app-bar />
     <v-main>
       <v-container class="default-template-container" fluid>
@@ -11,11 +12,12 @@
 </template>
 
 <script>
+  import Alert from "../Alert";
   import DefaultTemplateAppBar from "./DefaultTemplateAppBar";
   import DefaultTemplateFooter from "./DefaultTemplateFooter";
   export default {
     name: "default-template",
-    components: {DefaultTemplateAppBar, DefaultTemplateFooter}
+    components: {Alert, DefaultTemplateAppBar, DefaultTemplateFooter}
   }
 </script>
 

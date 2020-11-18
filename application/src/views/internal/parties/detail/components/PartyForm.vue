@@ -12,9 +12,16 @@
         label="Descrição"
         outlined
         required/>
-      <v-btn type="submit" color="secondary" depressed block large>
-        Criar
-      </v-btn>
+      <v-layout class="px-3 mt-5" row wrap>
+        <v-flex class="d-flex align-center justify-end xs12">
+          <v-btn class="mr-5" depressed @click="goToPartiesPage">
+            Cancelar
+          </v-btn>
+          <v-btn type="submit" color="secondary" depressed>
+            Salvar
+          </v-btn>
+        </v-flex>
+      </v-layout>
     </v-form>
   </div>
 </template>
@@ -30,7 +37,10 @@
     },
     methods: {
       submit() {
-        this.$emit('submit')
+        this.$emit('submit');
+      },
+      goToPartiesPage() {
+        this.$router.push({ name: "parties" });
       }
     }
   }

@@ -24,7 +24,7 @@ touch .env
 cat < .env.example >> .env
 ```
 
-Agora, você pode editar o aquivo `.env` com as configurações de acesso de seu banco de dados.
+Agora, você pode editar o arquivo `.env` com as configurações de acesso de seu banco de dados.
 
 Ótimo. Vamos criar o banco de dados por meio da CLI do Sequelize:
 

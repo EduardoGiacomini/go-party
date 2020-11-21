@@ -53,7 +53,11 @@
         this.$emit('submit', {name: this.name, email: this.email, phone: phone});
       },
       getFormattedPhone() {
-        return this.phone.replace(/[\W_]/g, '');
+        if (this.phone) {
+          return this.phone.replace(/[\W_]/g, '');
+        } else {
+          return null;
+        }
       }
     }
   }

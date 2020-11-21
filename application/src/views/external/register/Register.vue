@@ -5,7 +5,7 @@
         <v-card outlined>
           <v-card-title class="px-2 py-6">
             <h2 class="register__title font-weight-medium text-center grey--text text--darken-2">
-              Criar conta de usuário
+              Criar conta
             </h2>
           </v-card-title>
           <v-divider></v-divider>
@@ -41,7 +41,7 @@
           this.showSuccess('Conta registrada com sucesso.');
           this.$router.push({ name: "parties" });
         } catch (error) {
-          console.log(error);
+          this.showError(error);
         }
       }
     }

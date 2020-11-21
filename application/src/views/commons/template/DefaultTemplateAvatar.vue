@@ -24,9 +24,6 @@
   import { mapState } from 'vuex'
   export default {
     name: "default-template-avatar",
-    computed: mapState(['user']),
-    created() {
-      console.log(this.$store.state)
-    }
+    computed: mapState(['user'])
   }
 </script>

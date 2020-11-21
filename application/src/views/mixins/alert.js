@@ -1,10 +1,13 @@
 import {mutations} from "../../constants";
+import { getMessageError, getTranslatedMessageError } from "../../utils";
 
 export default {
   methods: {
-    showError(message) {
+    showError(error) {
+      const message = getMessageError(error);
+      const translatedMessage = getTranslatedMessageError(message);
       this.$store.commit(mutations.SET_ALERT, {
-        message: message,
+        message: translatedMessage,
         type: 'error'
       });
     },

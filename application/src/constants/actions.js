@@ -1,5 +1,6 @@
 export default {
   FAKE_LOGIN: 'fakeLogin',
+  REGISTER: 'register',
 
   CREATE_PARTY: 'createParty',
   FIND_PARTIES: 'findParties',

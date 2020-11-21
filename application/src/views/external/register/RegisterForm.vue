@@ -15,33 +15,45 @@
       label="E-mail"
       outlined
       required/>
+    <v-text-field
+      prepend-inner-icon="mdi-phone"
+      v-model="phone"
+      v-mask="'(##) #####-####'"
+      label="Celular (opcional)"
+      outlined
+      required/>
     <v-btn type="submit" color="secondary" depressed block large>
-      Entrar
+      Criar conta
     </v-btn>
   </v-form>
 </template>
 
 <script>
   export default {
-    name: "fake-login-form",
+    name: "register-form",
     data() {
       return {
-        email: null,
         name: null,
+        email: null,
+        phone: null,
         rules: {
+          name: [
+            value => !!value || 'O nome é obrigatório',
+          ],
           email: [
             value => !!value || 'O e-mail é obrigatório',
             value => /.+@.+/.test(value) || 'O e-mail deve ser válido'
-          ],
-          name: [
-            value => !!value || 'O nome é obrigatório',
           ]
         }
       }
     },
     methods: {
       submit() {
-        this.$emit('submit', {email: this.email, name: this.name});
+        const phone = this.getFormattedPhone()
+        this.$emit('submit', {name: this.name, email: this.email, phone: phone});
+      },
+      getFormattedPhone() {
+        return this.phone.replace(/[\W_]/g, '');
       }
     }
   }

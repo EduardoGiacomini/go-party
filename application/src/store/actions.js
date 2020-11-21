@@ -2,15 +2,19 @@ import axios from "../plugins/axios";
 import {actions, mutations} from "../constants";
 
 export default {
-  async [actions.CREATE_PARTY]({state}, party) {
-    const userId = state.user.id;
-    const {data} = await axios.post(`users/${userId}/parties`, party);
-    return data;
+  async [actions.REGISTER]({commit}, user) {
+    const {data} = await axios.post("/users", user);
+    commit(mutations.SET_USER, data);
   },
 
   async [actions.FAKE_LOGIN]({commit}, {email, name}) {
     const {data} = await axios.post("/auth/login", {email, name});
     commit(mutations.SET_USER, data);
+  },
+
+  async [actions.CREATE_PARTY]({state}, party) {
+    const userId = state.user.id;
+    const {data} = await axios.post(`users/${userId}/parties`, party);
     return data;
   },
 

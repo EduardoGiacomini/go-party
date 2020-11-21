@@ -10,6 +10,14 @@
           <v-card-text>
             <fake-login-form @submit="submit"/>
           </v-card-text>
+          <v-card-actions>
+            <p class="text-center mx-auto grey--text text--darken-2">
+              Não possui uma conta?
+              <router-link class="blue--text text--darken-2 font-weight-medium" to="/register">
+                Registre-se
+              </router-link>
+            </p>
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -19,8 +27,10 @@
 <script>
   import {actions} from "@/constants";
   import FakeLoginForm from "./FakeLoginForm";
+  import {alert} from "../../mixins";
   export default {
     name: "fake-login",
+    mixins: [alert],
     components: {FakeLoginForm},
     methods: {
       async submit({email, name}) {
@@ -28,6 +38,7 @@
           const user = await this.$store.dispatch(actions.FAKE_LOGIN, {email, name});
           this.$router.push({ name: "parties" });
         } catch (error) {
+          this.showError('Ocorreu um erro inesperado.');
           console.log(error);
         }
       }

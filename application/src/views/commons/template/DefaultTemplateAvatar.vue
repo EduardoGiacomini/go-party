@@ -21,15 +21,12 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
     name: "default-template-avatar",
-    data() {
-      return {
-        user: {
-          name: "Carlos Eduardo",
-          email: "eduardo.giacomini@ufms.br"
-        }
-      }
+    computed: mapState(['user']),
+    created() {
+      console.log(this.$store.state)
     }
   }
 </script>

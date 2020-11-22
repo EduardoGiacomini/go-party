@@ -8,25 +8,29 @@ export default {
       const translatedMessage = getTranslatedMessageError(message);
       this.$store.commit(mutations.SET_ALERT, {
         message: translatedMessage,
-        type: 'error'
+        color: 'error',
+        icon: 'mdi-alert-circle'
       });
     },
     showWarning(message) {
       this.$store.commit(mutations.SET_ALERT, {
         message: message,
-        type: 'warning'
+        color: 'warning',
+        icon: 'mdi-alert'
       })
     },
     showSuccess(message) {
       this.$store.commit(mutations.SET_ALERT, {
         message: message,
-        type: 'secondary'
+        color: 'secondary',
+        icon: 'mdi-check'
       })
     },
     showInfo(message) {
       this.$store.commit(mutations.SET_ALERT, {
         message: message,
-        type: 'info'
+        color: 'blue',
+        icon: 'mdi-alert'
       })
     }
   }

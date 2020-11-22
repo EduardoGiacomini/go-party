@@ -40,16 +40,24 @@
     },
     methods: {
       async findParties() {
-        const foundParties = await this.$store.dispatch(actions.FIND_PARTIES);
-        this.parties = foundParties;
+        try {
+          const foundParties = await this.$store.dispatch(actions.FIND_PARTIES);
+          this.parties = foundParties;
+        } catch (error) {
+          this.showError(error);
+        }
       },
       goToCreatePartyPage() {
         this.$router.push({ name: "createParty" });
       },
       async removeParty(id) {
-        await this.$store.dispatch(actions.REMOVE_PARTY, id);
-        await this.findParties();
-        this.showSuccess('Festa excluída com sucesso.')
+        try {
+          await this.$store.dispatch(actions.REMOVE_PARTY, id);
+          await this.findParties();
+          this.showSuccess('Festa excluída com sucesso.');
+        } catch (error) {
+          this.showError(error);
+        }
       }
     }
   }

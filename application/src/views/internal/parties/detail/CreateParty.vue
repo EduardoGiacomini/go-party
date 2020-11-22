@@ -45,8 +45,7 @@
           this.$router.push({ name: "parties" });
           this.showSuccess('Festa criada com sucesso.');
         } catch (error) {
-          // TODO: exibir mensagem
-          console.log(error);
+          this.showError(error);
         }
       }
     }

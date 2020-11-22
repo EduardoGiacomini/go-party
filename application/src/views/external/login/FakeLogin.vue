@@ -38,8 +38,7 @@
           const user = await this.$store.dispatch(actions.FAKE_LOGIN, {email, name});
           this.$router.push({ name: "parties" });
         } catch (error) {
-          this.showError('Ocorreu um erro inesperado.');
-          console.log(error);
+          this.showError(error);
         }
       }
     }

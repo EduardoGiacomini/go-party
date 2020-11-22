@@ -6,7 +6,7 @@ export default {
     Vue.set(state, 'user', user);
   },
 
-  [mutations.SET_ALERT](state, {message, type}) {
-    Vue.set(state, 'alert', {message, type});
+  [mutations.SET_ALERT](state, {message, color, icon}) {
+    Vue.set(state, 'alert', {message, color, icon});
   }
 };

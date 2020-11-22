@@ -24,8 +24,10 @@
   import BackButton from "../../../commons/BackButton";
   import PartyForm from "./components/PartyForm";
   import {actions} from "../../../../constants";
+  import {alert} from "../../../mixins";
   export default {
     name: "update-party",
+    mixins: [alert],
     components: {BackButton, PartyForm},
     data() {
       return {
@@ -41,21 +43,24 @@
       getPartyIdFromUrl() {
         this.partyId = this.$route.params.id
       },
+      goToPartiesPage() {
+        this.$router.push({name: "parties"});
+      },
       async findParty() {
         try {
           this.party = await this.$store.dispatch(actions.FIND_PARTY_BY_ID, this.partyId);
         } catch (error) {
-          // TODO: exibir mensagem de erro.
-          console.log(error);
+          this.showError(error);
+          this.goToPartiesPage();
         }
       },
       async update() {
         try {
           await this.$store.dispatch(actions.UPDATE_PARTY, {partyId: this.partyId, party: this.party});
           await this.findParty();
+          this.showSuccess('Festa atualizada com sucesso.');
         } catch (error) {
-          // TODO: exibir mensagem de erro
-          console.log(error);
+          this.showError(error);
         }
       }
     }

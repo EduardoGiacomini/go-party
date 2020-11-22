@@ -12,8 +12,13 @@
         </v-btn>
       </v-layout>
     </v-card-title>
-    <v-card-subtitle v-if="party.dateTime">{{party.dateTime}}</v-card-subtitle>
-    <v-card-subtitle v-else><span class="font-italic">Data não definida</span></v-card-subtitle>
+    <v-card-subtitle v-if="party.date_time">
+      <v-icon>mdi-clock</v-icon>
+      {{getFormattedDate}}
+    </v-card-subtitle>
+    <v-card-subtitle v-else>
+      <span class="font-italic grey--text text--lighten-1">Data não definida</span>
+    </v-card-subtitle>
     <v-card-text>{{party.description}}</v-card-text>
     <confirm
       :open="openRemoveConfirm"
@@ -29,6 +34,7 @@
 </template>
 
 <script>
+  import dayjs from "dayjs";
   import Confirm from "../../../../commons/Confirm";
   export default {
     name: "parties-card",
@@ -42,6 +48,11 @@
       party: {
         type: Object,
         required: true
+      }
+    },
+    computed: {
+      getFormattedDate() {
+        return dayjs(this.party.date_time).format('DD/MM/YYYY - HH:mm');
       }
     },
     methods: {

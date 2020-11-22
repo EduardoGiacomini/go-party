@@ -68,7 +68,7 @@
     created() {
       if (this.isEditMode && this.value.date_time) {
         const date = new Date(this.value.date_time);
-        this.date = `${padStart(date.getFullYear(), 4, "0")}-${padStart(date.getMonth(), 2, "0")}-${padStart(date.getDate(), 2, "0")}`;
+        this.date = `${padStart(date.getFullYear(), 4, "0")}-${padStart(date.getMonth() + 1, 2, "0")}-${padStart(date.getDate(), 2, "0")}`;
         this.time = `${padStart(date.getHours(), 2, "0")}:${padStart(date.getMinutes(), 2, "0")}`;
       }
     },

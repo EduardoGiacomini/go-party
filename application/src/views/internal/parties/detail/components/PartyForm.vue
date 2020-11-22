@@ -45,6 +45,7 @@
 </template>
 
 <script>
+  import {padStart} from "@/utils";
   export default {
     name: "party-form",
     data() {
@@ -57,6 +58,18 @@
       value: {
         type: Object,
         required: true
+      },
+      isEditMode: {
+        type: Boolean,
+        required: false,
+        default: false
+      }
+    },
+    created() {
+      if (this.isEditMode && this.value.date_time) {
+        const date = new Date(this.value.date_time);
+        this.date = `${padStart(date.getFullYear(), 4, "0")}-${padStart(date.getMonth(), 2, "0")}-${padStart(date.getDate(), 2, "0")}`;
+        this.time = `${padStart(date.getHours(), 2, "0")}:${padStart(date.getMinutes(), 2, "0")}`;
       }
     },
     methods: {
@@ -70,7 +83,7 @@
         return this.date && this.time;
       },
       formatDateTime() {
-        this.value.dateTime = new Date(`${this.date} ${this.time}`);
+        this.value.date_time = new Date(`${this.date} ${this.time}`);
       },
       goToPartiesPage() {
         this.$router.push({ name: "parties" });

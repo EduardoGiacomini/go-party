@@ -34,7 +34,7 @@
         party: {
           name: null,
           description: null,
-          dateTime: null
+          date_time: null
         }
       }
     },

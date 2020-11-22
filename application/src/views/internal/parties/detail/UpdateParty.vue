@@ -13,8 +13,8 @@
         </div>
       </v-card-title>
       <v-divider></v-divider>
-      <v-card-text>
-        <party-form v-model="party" @submit="update"/>
+      <v-card-text v-if="party">
+        <party-form :is-edit-mode="true" v-model="party" @submit="update"/>
       </v-card-text>
     </v-card>
   </div>
@@ -32,7 +32,7 @@
     data() {
       return {
         partyId: null,
-        party: {}
+        party: null
       }
     },
     async mounted() {
